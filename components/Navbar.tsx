@@ -122,7 +122,7 @@ export default function Navbar() {
               />
 
               {/* DERECHA */}
-              <div className="flex items-center justify-end gap-2">
+              <div className="flex items-center justify-end lg:justify-start gap-2">
                 {/* Desktop: links + CTA */}
                 <div className="hidden lg:flex items-center gap-1">
                   {navLinksRight.map((l) => (
