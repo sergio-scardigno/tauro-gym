@@ -51,17 +51,16 @@ export default function Hero() {
         </h1>
 
         <p className="text-lg sm:text-xl md:text-2xl text-white mb-8 max-w-2xl mx-auto drop-shadow-lg">
-          Clases para principiantes y avanzados. Primera clase de prueba
-          gratuita.
+          Clases para principiantes y avanzados. Entrenamiento profesional y personalizado.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
           <button
             onClick={handleReservarClick}
             className="w-full sm:w-auto px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-white"
-            aria-label="Reservar clase de prueba"
+            aria-label="Contactar"
           >
-            Reservar clase de prueba
+            Contactar
           </button>
 
           <button
@@ -89,7 +88,7 @@ export default function Hero() {
                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
               />
             </svg>
-            <span className="text-gray-900 font-semibold">Primer clase guiada</span>
+            <span className="text-gray-900 font-semibold">Clases guiadas</span>
           </div>
 
           <div className="flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-md rounded-full border-2 border-red-500 shadow-lg">

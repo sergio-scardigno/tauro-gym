@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { CONFIG } from '@/lib/constants';
 import { validateWhatsApp, generateWhatsAppLink } from '@/lib/utils';
 
@@ -14,11 +14,6 @@ const objectives = [
 
 const timePreferences = ['Mañana', 'Tarde', 'Noche'];
 
-const planNames: Record<string, string> = {
-  'two-classes': '2 clases por semana',
-  'unlimited': 'Ilimitado',
-  'pack-10': 'Pack 10 clases',
-};
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -27,33 +22,9 @@ export default function Contact() {
     objetivo: '',
     horario: '',
   });
-  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [showToast, setShowToast] = useState(false);
 
-  useEffect(() => {
-    // Detectar plan seleccionado desde Pricing
-    const handlePlanSelected = (event: CustomEvent) => {
-      const planId = event.detail;
-      setSelectedPlan(planId);
-    };
-
-    // Verificar si hay plan en sessionStorage
-    const storedPlan = sessionStorage.getItem('selectedPlan');
-    if (storedPlan) {
-      setSelectedPlan(storedPlan);
-      sessionStorage.removeItem('selectedPlan');
-    }
-
-    window.addEventListener('planSelected', handlePlanSelected as EventListener);
-
-    return () => {
-      window.removeEventListener(
-        'planSelected',
-        handlePlanSelected as EventListener
-      );
-    };
-  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -99,14 +70,11 @@ export default function Contact() {
     }
 
     // Construir mensaje para WhatsApp
-    let message = `Hola! Quiero reservar una clase de prueba.\n\n`;
+    let message = `Hola! Me interesa conocer más sobre las clases.\n\n`;
     message += `Nombre: ${formData.nombre}\n`;
     message += `WhatsApp: ${formData.whatsapp}\n`;
     message += `Objetivo: ${formData.objetivo}\n`;
     message += `Horario preferido: ${formData.horario}\n`;
-    if (selectedPlan) {
-      message += `Plan de interés: ${planNames[selectedPlan] || selectedPlan}\n`;
-    }
     message += `\n¿Me pasan horarios disponibles?`;
 
     // Generar link y abrir WhatsApp
@@ -124,7 +92,6 @@ export default function Contact() {
       objetivo: '',
       horario: '',
     });
-    setSelectedPlan(null);
   };
 
   return (
@@ -134,7 +101,7 @@ export default function Contact() {
     >
       <div className="max-w-2xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-gray-900">
-          Reservá tu clase de prueba
+          Contactanos
         </h2>
         <p className="text-center text-gray-700 mb-8">
           Completa el formulario y te contactamos por WhatsApp
@@ -145,16 +112,6 @@ export default function Contact() {
           className="bg-white p-6 sm:p-8 rounded-lg border-2 border-red-100 shadow-sm space-y-6"
           noValidate
         >
-          {selectedPlan && (
-            <div className="bg-red-50 border-2 border-red-200 rounded-lg p-4">
-              <p className="text-sm text-gray-700 mb-1">
-                Plan seleccionado:
-              </p>
-              <p className="font-semibold text-red-600">
-                {planNames[selectedPlan] || selectedPlan}
-              </p>
-            </div>
-          )}
 
           <div>
             <label

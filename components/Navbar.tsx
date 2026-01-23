@@ -19,7 +19,7 @@ const navLinksRight = [
 // ✅ Configurables
 const WHATSAPP_NUMBER = '54911XXXXXXXX'; // tu número sin "+"
 const WHATSAPP_TEXT = encodeURIComponent(
-  'Hola! Quiero reservar una clase de prueba. Mi nivel es __ y puedo entrenar en __. ¿Me pasan horarios?'
+  'Hola! Me interesa conocer más sobre las clases. Mi nivel es __ y puedo entrenar en __. ¿Me pasan horarios?'
 );
 
 // ✅ Tamaño del logo optimizado para cada breakpoint
@@ -141,17 +141,17 @@ export default function Navbar() {
                   ))}
                 </div>
 
-                {/* CTA WhatsApp (siempre visible) */}
+                {/* CTA WhatsApp (solo desktop) */}
                 <a
                   href={whatsappHref}
                   target="_blank"
                   rel="noreferrer"
                   className={cn(
-                    'rounded-full px-3 py-2 text-xs md:text-sm font-semibold',
+                    'hidden lg:flex rounded-full px-4 py-2 text-sm font-semibold',
                     'bg-red-600 text-white hover:bg-red-500 transition-all duration-200',
                     'shadow-[0_8px_20px_-8px_rgba(239,68,68,0.6)]',
                     'focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500',
-                    'lg:ml-1 lg:px-4'
+                    'ml-1'
                   )}
                   aria-label="Contactar por WhatsApp"
                 >

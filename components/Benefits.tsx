@@ -75,9 +75,9 @@ const benefits = [
         />
       </svg>
     ),
-    title: 'Planes mensuales',
+    title: 'Flexibilidad horaria',
     description:
-      'Diferentes opciones de planes para adaptarse a tus necesidades y presupuesto.',
+      'Horarios adaptados a tu rutina diaria para que puedas entrenar cuando mejor te convenga.',
   },
   {
     icon: (

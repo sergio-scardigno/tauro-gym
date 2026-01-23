@@ -10,11 +10,11 @@ const nunito = Nunito({
 
 export const metadata: Metadata = {
   title: "Kickboxing & Muay Thai en Chascomús | Escuela de Artes Marciales",
-  description: "Clases de Kickboxing y Muay Thai en Chascomús. Entrenamiento para principiantes y avanzados. Primera clase de prueba gratuita. Horarios flexibles, entrenadores certificados.",
+  description: "Clases de Kickboxing y Muay Thai en Chascomús. Entrenamiento para principiantes y avanzados. Horarios flexibles, entrenadores certificados.",
   keywords: "kickboxing, muay thai, artes marciales, chascomús, entrenamiento, defensa personal, fitness, clases",
   openGraph: {
     title: "Kickboxing & Muay Thai en Chascomús",
-    description: "Clases de Kickboxing y Muay Thai en Chascomús. Primera clase de prueba gratuita.",
+    description: "Clases de Kickboxing y Muay Thai en Chascomús. Entrenamiento profesional y personalizado.",
     type: "website",
   },
 };

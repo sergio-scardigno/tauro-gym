@@ -34,7 +34,7 @@ const testimonials = [
   {
     name: 'Roberto López',
     level: 'Intermedio',
-    text: 'Excelente para defensa personal y fitness. Los planes son flexibles y los precios justos.',
+    text: 'Excelente para defensa personal y fitness. El entrenamiento es completo y los horarios se adaptan a mi rutina.',
     initials: 'RL',
   },
 ];
