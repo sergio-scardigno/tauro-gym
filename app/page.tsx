@@ -15,9 +15,9 @@ export default function Home() {
       <Hero />
       <Benefits />
       <ScheduleLocation />
-      <Testimonials />
       <FAQ />
       <Contact />
+      <Testimonials />
       <Footer />
       <WhatsAppFloatingButton />
     </main>

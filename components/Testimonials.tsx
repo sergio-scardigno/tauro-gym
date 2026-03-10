@@ -1,51 +1,21 @@
-import { CONFIG } from '@/lib/constants';
-
-const testimonials = [
+const testimonialVideos = [
   {
-    name: 'María González',
-    level: 'Principiante',
-    text: 'Empecé sin experiencia y en pocos meses ya me siento mucho más segura y en forma. Los profesores son excelentes.',
-    initials: 'MG',
+    src: '/video/testimonios/VID_20260224_214817.mp4',
+    title: 'Testimonio 1',
   },
   {
-    name: 'Carlos Rodríguez',
-    level: 'Intermedio',
-    text: 'El ambiente es increíble, todos se apoyan mutuamente. He mejorado mucho mi técnica y condición física.',
-    initials: 'CR',
+    src: '/video/testimonios/VID_20260224_214853.mp4',
+    title: 'Testimonio 2',
   },
   {
-    name: 'Ana Martínez',
-    level: 'Principiante',
-    text: 'La primera clase fue genial, me sentí muy cómoda. Ahora voy 3 veces por semana y no puedo parar.',
-    initials: 'AM',
+    src: '/video/testimonios/VID_20260224_215011.mp4',
+    title: 'Testimonio 3',
   },
   {
-    name: 'Diego Fernández',
-    level: 'Intermedio',
-    text: 'Entrenamiento profesional con horarios que se adaptan a mi trabajo. Muy recomendable.',
-    initials: 'DF',
-  },
-  {
-    name: 'Laura Sánchez',
-    level: 'Principiante',
-    text: 'Me ayudó mucho a bajar de peso y ganar confianza. Los grupos por nivel hacen que sea más fácil empezar.',
-    initials: 'LS',
-  },
-  {
-    name: 'Roberto López',
-    level: 'Intermedio',
-    text: 'Excelente para defensa personal y fitness. El entrenamiento es completo y los horarios se adaptan a mi rutina.',
-    initials: 'RL',
+    src: '/video/testimonios/VID_20260224_215104.mp4',
+    title: 'Testimonio 4',
   },
 ];
-
-function Avatar({ initials }: { initials: string }) {
-  return (
-    <div className="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white font-semibold">
-      {initials}
-    </div>
-  );
-}
 
 export default function Testimonials() {
   return (
@@ -55,50 +25,26 @@ export default function Testimonials() {
     >
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-gray-900">
-          Lo que dicen nuestros alumnos
+          Testimonios en video
         </h2>
-
-        {/* Métricas */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          <div className="bg-white p-6 rounded-lg border-2 border-red-100 text-center shadow-sm">
-            <div className="text-4xl font-bold text-red-600 mb-2">
-              {CONFIG.METRICS.students}
-            </div>
-            <div className="text-gray-700">alumnos activos</div>
-          </div>
-          <div className="bg-white p-6 rounded-lg border-2 border-red-100 text-center shadow-sm">
-            <div className="text-4xl font-bold text-red-600 mb-2">
-              {CONFIG.METRICS.months}
-            </div>
-            <div className="text-gray-700">meses de experiencia</div>
-          </div>
-          <div className="bg-white p-6 rounded-lg border-2 border-red-100 text-center shadow-sm">
-            <div className="text-4xl font-bold text-red-600 mb-2">
-              {CONFIG.METRICS.recommend}
-            </div>
-            <div className="text-gray-700">nos recomiendan</div>
-          </div>
-        </div>
-
-        {/* Testimonios */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, index) => (
+        <p className="text-center text-gray-700 mb-10 max-w-2xl mx-auto">
+          Conocé la experiencia de nuestros alumnos en sus propias palabras.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {testimonialVideos.map((video) => (
             <div
-              key={index}
-              className="bg-white p-6 rounded-lg border-2 border-red-100 hover:border-red-500 transition-all duration-300 shadow-sm"
+              key={video.src}
+              className="bg-white p-4 rounded-lg border-2 border-red-100 shadow-sm"
             >
-              <div className="flex items-center gap-4 mb-4">
-                <Avatar initials={testimonial.initials} />
-                <div>
-                  <div className="font-semibold text-gray-900">
-                    {testimonial.name}
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    {testimonial.level}
-                  </div>
-                </div>
-              </div>
-              <p className="text-gray-700 italic">"{testimonial.text}"</p>
+              <video
+                controls
+                preload="metadata"
+                className="w-full aspect-[9/16] rounded-md bg-black object-cover"
+                aria-label={video.title}
+              >
+                <source src={video.src} type="video/mp4" />
+                Tu navegador no soporta videos HTML5.
+              </video>
             </div>
           ))}
         </div>
