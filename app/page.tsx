@@ -14,10 +14,10 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Benefits />
+      <Testimonials />
       <ScheduleLocation />
       <FAQ />
       <Contact />
-      <Testimonials />
       <Footer />
       <WhatsAppFloatingButton />
     </main>
