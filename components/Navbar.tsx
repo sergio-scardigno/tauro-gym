@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
+import { CONFIG } from '@/lib/constants';
 import { scrollToSection } from '@/lib/utils';
 
 const navLinksLeft = [
@@ -16,11 +17,8 @@ const navLinksRight = [
   { id: 'contacto', label: 'Contacto' },
 ];
 
-// ✅ Configurables
-const WHATSAPP_NUMBER = '54911XXXXXXXX'; // tu número sin "+"
-const WHATSAPP_TEXT = encodeURIComponent(
-  'Hola! Me interesa conocer más sobre las clases. Mi nivel es __ y puedo entrenar en __. ¿Me pasan horarios?'
-);
+// ✅ Enlace WhatsApp (número y mensaje en lib/constants.ts)
+const WHATSAPP_TEXT = encodeURIComponent(CONFIG.WHATSAPP_MESSAGE);
 
 // ✅ Tamaño del logo optimizado para cada breakpoint
 const LOGO_SIZE = {
@@ -45,7 +43,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   const whatsappHref = useMemo(
-    () => `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_TEXT}`,
+    () => `https://wa.me/${CONFIG.WHATSAPP_NUMBER}?text=${WHATSAPP_TEXT}`,
     []
   );
 

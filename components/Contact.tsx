@@ -103,8 +103,23 @@ export default function Contact() {
         <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 text-gray-900">
           Contactanos
         </h2>
-        <p className="text-center text-gray-700 mb-8">
+        <p className="text-center text-gray-700 mb-2">
           Completa el formulario y te contactamos por WhatsApp
+        </p>
+        <p className="text-center text-gray-600 text-sm mb-8">
+          Los mensajes van a{' '}
+          <a
+            href={generateWhatsAppLink(
+              CONFIG.WHATSAPP_NUMBER,
+              CONFIG.WHATSAPP_MESSAGE
+            )}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-green-700 hover:underline"
+          >
+            {CONFIG.WHATSAPP_DISPLAY}
+          </a>{' '}
+          (mismo número que el botón flotante).
         </p>
 
         <form
