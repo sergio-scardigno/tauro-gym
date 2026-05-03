@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 const faqs = [
   {
@@ -38,9 +38,9 @@ const faqs = [
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+  const toggleFAQ = useCallback((index: number) => {
+    setOpenIndex(prev => prev === index ? null : index);
+  }, []);
 
   return (
     <section id="faq" className="py-20 px-4 sm:px-6 lg:px-8 bg-white scroll-mt-24 md:scroll-mt-32">

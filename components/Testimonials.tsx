@@ -38,7 +38,7 @@ export default function Testimonials() {
             >
               <video
                 controls
-                preload="metadata"
+                preload="none"
                 className="w-full aspect-[9/16] rounded-md bg-black object-cover"
                 aria-label={video.title}
               >

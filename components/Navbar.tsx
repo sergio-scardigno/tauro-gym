@@ -8,11 +8,10 @@ import { scrollToSection } from '@/lib/utils';
 const navLinksLeft = [
   { id: 'beneficios', label: 'Beneficios' },
   { id: 'horarios', label: 'Horarios' },
-  { id: 'planes', label: 'Planes' },
+  { id: 'testimonios', label: 'Testimonios' },
 ];
 
 const navLinksRight = [
-  { id: 'testimonios', label: 'Testimonios' },
   { id: 'faq', label: 'FAQ' },
   { id: 'contacto', label: 'Contacto' },
 ];
