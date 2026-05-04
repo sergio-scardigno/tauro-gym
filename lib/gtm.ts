@@ -1,6 +1,7 @@
 /**
- * Eventos para Google Tag Manager (dataLayer).
- * En GTM: variable DLV `whatsapp_source`, `whatsapp_intent`; activador "Evento personalizado" `whatsapp_click`.
+ * WhatsApp → `dataLayer` (GTM) + `gtag('event', 'whatsapp_click', …)` (GA4 / Google Ads “crear con código”).
+ * GTM: variables DLV `whatsapp_source`, `whatsapp_intent`; activador evento personalizado `whatsapp_click`.
+ * Si también disparás GA4 desde GTM con el mismo evento, podés duplicar hits: dejá solo un camino para GA4.
  */
 
 export type WhatsAppSource =
@@ -20,6 +21,7 @@ export type PushWhatsAppEventParams = {
 declare global {
   interface Window {
     dataLayer?: Record<string, unknown>[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -41,4 +43,12 @@ export function pushWhatsAppEvent({
   }
 
   window.dataLayer.push(payload);
+
+  const gtagParams: Record<string, string> = {
+    whatsapp_source: source,
+  };
+  if (intent !== undefined && intent !== '') {
+    gtagParams.whatsapp_intent = intent;
+  }
+  window.gtag?.('event', 'whatsapp_click', gtagParams);
 }
