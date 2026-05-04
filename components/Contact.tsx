@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { CONFIG } from '@/lib/constants';
+import { pushWhatsAppEvent } from '@/lib/gtm';
 import { validateWhatsApp, generateWhatsAppLink } from '@/lib/utils';
 
 const objectives = [
@@ -77,6 +78,11 @@ export default function Contact() {
     message += `Horario preferido: ${formData.horario}\n`;
     message += `\n¿Me pasan horarios disponibles?`;
 
+    pushWhatsAppEvent({
+      source: 'contact_form',
+      intent: formData.objetivo,
+    });
+
     // Generar link y abrir WhatsApp
     const whatsappLink = generateWhatsAppLink(CONFIG.WHATSAPP_NUMBER, message);
     window.open(whatsappLink, '_blank', 'noopener,noreferrer');
@@ -115,6 +121,7 @@ export default function Contact() {
             )}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => pushWhatsAppEvent({ source: 'contact_link' })}
             className="font-semibold text-green-700 hover:underline"
           >
             {CONFIG.WHATSAPP_DISPLAY}

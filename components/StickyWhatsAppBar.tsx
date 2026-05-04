@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { CONFIG } from '@/lib/constants';
+import { pushWhatsAppEvent } from '@/lib/gtm';
 import { generateWhatsAppLink } from '@/lib/utils';
 
 export default function StickyWhatsAppBar() {
@@ -47,6 +48,7 @@ export default function StickyWhatsAppBar() {
           href={href}
           target="_blank"
           rel="noopener noreferrer"
+          onClick={() => pushWhatsAppEvent({ source: 'sticky_bar' })}
           className="flex items-center gap-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold rounded-full transition-colors"
         >
           <svg

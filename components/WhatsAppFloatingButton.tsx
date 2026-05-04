@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { CONFIG } from '@/lib/constants';
+import { pushWhatsAppEvent } from '@/lib/gtm';
 import { generateWhatsAppLink } from '@/lib/utils';
 
 const objectives = [
@@ -33,7 +34,8 @@ export default function WhatsAppFloatingButton() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, [isOpen]);
 
-  const handleWhatsApp = (message: string) => {
+  const handleWhatsApp = (message: string, intentLabel: string) => {
+    pushWhatsAppEvent({ source: 'floating', intent: intentLabel });
     const href = generateWhatsAppLink(CONFIG.WHATSAPP_NUMBER, message);
     window.open(href, '_blank', 'noopener,noreferrer');
     setIsOpen(false);
@@ -52,7 +54,7 @@ export default function WhatsAppFloatingButton() {
           {objectives.map((obj) => (
             <button
               key={obj.label}
-              onClick={() => handleWhatsApp(obj.message)}
+              onClick={() => handleWhatsApp(obj.message, obj.label)}
               className="w-full text-left px-3 py-2.5 text-sm text-gray-800 hover:bg-red-50 hover:text-red-700 rounded-lg transition-colors"
             >
               {obj.label}

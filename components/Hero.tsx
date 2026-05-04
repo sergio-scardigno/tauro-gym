@@ -2,10 +2,12 @@
 
 import Image from 'next/image';
 import { CONFIG } from '@/lib/constants';
+import { pushWhatsAppEvent } from '@/lib/gtm';
 import { scrollToSection, generateWhatsAppLink } from '@/lib/utils';
 
 export default function Hero() {
   const handleWhatsAppClick = () => {
+    pushWhatsAppEvent({ source: 'hero' });
     const link = generateWhatsAppLink(
       CONFIG.WHATSAPP_NUMBER,
       CONFIG.WHATSAPP_MESSAGE

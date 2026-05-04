@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useMemo, useState } from 'react';
 import { CONFIG } from '@/lib/constants';
+import { pushWhatsAppEvent } from '@/lib/gtm';
 import { scrollToSection } from '@/lib/utils';
 
 const navLinksLeft = [
@@ -143,6 +144,7 @@ export default function Navbar() {
                   href={whatsappHref}
                   target="_blank"
                   rel="noreferrer"
+                  onClick={() => pushWhatsAppEvent({ source: 'navbar' })}
                   className={cn(
                     'hidden lg:flex rounded-full px-4 py-2 text-sm font-semibold',
                     'bg-red-600 text-white hover:bg-red-500 transition-all duration-200',
@@ -305,6 +307,7 @@ export default function Navbar() {
                 href={whatsappHref}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => pushWhatsAppEvent({ source: 'navbar_mobile' })}
                 className={cn(
                   'w-full rounded-xl px-4 py-4 font-semibold text-center',
                   'bg-gradient-to-r from-red-600 to-red-500 text-white',
